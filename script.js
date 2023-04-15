@@ -10,12 +10,11 @@ const inputArea = document.getElementById('input-area');
  * constructor params - element's tag, elment's id, element's classes
  */
 class Element {
-    constructor(tag, id = "", classes = [], eventListeners = {}, secondaryAttribs = {}) {
+    constructor(tag, id = "", classes = [], secondaryAttribs = {}) {
         this.tag = tag;
         this.id = id;
         this.classes = classes;
         this.element;
-        this.eventListeners = eventListeners;
         this.secondaryAttribs = secondaryAttribs;
     }
 
@@ -25,17 +24,16 @@ class Element {
         this.element.classList = this.classes;
         this.element.id = this.id;
 
-        for(const values in this.eventListeners) {
-            if(this.eventListeners.hasOwnProperty(values)) {
-                console.log('hey');
-                console.log(`${this.eventListeners[values]}`);
-                this.element.addEventListener(`${values}`, `${this.eventListeners[values]}`);
-            }
-        }
+        // for(const values in this.eventListeners) {
+        //     if(this.eventListeners.hasOwnProperty(values)) {
+        //         console.log('hey');
+        //         console.log(`${this.eventListeners[values]}`);
+        //         this.element.addEventListener(`${values}`, `${this.eventListeners[values]}`);
+        //     }
+        // }
 
         for(const values in this.secondaryAttribs) {
             if(this.secondaryAttribs.hasOwnProperty(values)) {
-                console.log('hey');
                 this.element.setAttribute(`${values}`, `${this.secondaryAttribs[values]}`);
             }
         }
@@ -46,10 +44,10 @@ class Element {
     
 }
 
-function clickHandler(e) {
-    console.log('clicked');
-    console.log(e);
-}
+// function clickHandler(e) {
+//     console.log('clicked');
+//     console.log(e);
+// }
 
 // function to insert smaller divs (input boxes) to the inputArea div
 function insertInputBoxes() {
@@ -62,7 +60,7 @@ function insertInputBoxes() {
      */
     for(let i = 1; i <= 14400; i++) {
         // create object from element class
-        let elementObject = new Element("div", i, ["input-box"], {click: clickHandler}, {widthattrib: "5px", heightattrib: "5px"});
+        let elementObject = new Element("div", i, ["input-box"], {widthattrib: "5px", heightattrib: "5px"});
 
         // call create() method to create element
         let element = elementObject.create();
