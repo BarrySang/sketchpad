@@ -1,0 +1,21 @@
+.container {
+    background-color: bisque;
+    margin: 50px;
+}
+
+#input-area {
+    width: 600px;
+    height: 600px;
+    background-color: blue;
+}
+
+.input-box {
+    background-color: yellow;
+    width: 5px;
+    height: 5px;
+    float: left;
+/*     
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0; */
+}
