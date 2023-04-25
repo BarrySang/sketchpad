@@ -24,14 +24,6 @@ class Element {
         this.element.classList = this.classes;
         this.element.id = this.id;
 
-        // for(const values in this.eventListeners) {
-        //     if(this.eventListeners.hasOwnProperty(values)) {
-        //         console.log('hey');
-        //         console.log(`${this.eventListeners[values]}`);
-        //         this.element.addEventListener(`${values}`, `${this.eventListeners[values]}`);
-        //     }
-        // }
-
         for(const values in this.secondaryAttribs) {
             if(this.secondaryAttribs.hasOwnProperty(values)) {
                 this.element.setAttribute(`${values}`, `${this.secondaryAttribs[values]}`);
@@ -43,11 +35,6 @@ class Element {
 
     
 }
-
-// function clickHandler(e) {
-//     console.log('clicked');
-//     console.log(e);
-// }
 
 // function to insert smaller divs (input boxes) to the inputArea div
 function insertInputBoxes() {
