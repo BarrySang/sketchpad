@@ -1,8 +1,6 @@
 // get input area from DOM
 const inputArea = document.getElementById('input-area');
 
-
-
 // create input box element
 
 /**
@@ -63,8 +61,6 @@ function mouseUpHandler() {
 
 // function to insert smaller divs (input boxes) to the inputArea div
 function insertInputBoxes() {
-    // let element = new Element("div", 1, ["input-box"]);
-    // console.log(element.create());
 
     /**
      * loop to insert input boxes
