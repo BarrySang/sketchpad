@@ -43,8 +43,22 @@ class Element {
     
 }
 
-function clickHandler() {
-    console.log("clicked");
+/**
+ * Event handler functions go here
+ */
+// function to handle 'mouse down' events
+function mouseDownHandler() {
+    console.log('mousedown');
+}
+
+// function to handle 'mouse move' events
+function mouseMoveHandler() {
+    console.log('mousemove')
+}
+
+// function to handle 'mouse up' events
+function mouseUpHandler() {
+    console.log('mouseup');
 }
 
 // function to insert smaller divs (input boxes) to the inputArea div
@@ -58,7 +72,7 @@ function insertInputBoxes() {
      */
     for(let i = 1; i <= 14400; i++) {
         // create object from element class
-        let elementObject = new Element("div", i, ["input-box"], {widthattrib: "5px", heightattrib: "5px"}, {click: clickHandler});
+        let elementObject = new Element("div", i, ["input-box"], {widthattrib: "5px", heightattrib: "5px"}, {mousedown: mouseDownHandler, mousemove: mouseMoveHandler, mouseup: mouseUpHandler});
 
         // call create() method to create element
         let element = elementObject.create();
