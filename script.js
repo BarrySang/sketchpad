@@ -1,9 +1,19 @@
+/**
+ * Global variables
+ */
 // get input area from DOM
 const inputArea = document.getElementById('input-area');
-
+// initialize variable to hold 'Drag' object
+let dragObject;
+// temporary storage for errors
+let errLog = [];
+// add 'mouseup' event listener to document
+inputArea.addEventListener('mouseleave', inputAreaMouseLeaveHandler);
+// variable to store ids of divs on which text to be recognized is drawn over
+let divIds = [];
 
 /**
- * Classes go here
+ * Classes
  */
 /**
  * Element class
@@ -74,26 +84,58 @@ class Drag {
             this.divIds.push(value);
         }
     }
+
+    // return 'divIds' property
+    get getDivIds() {
+        return this.divIds;
+    }
 }
 
 /**
- * Event handler functions go here
+ * Event handler functions
  */
 // function to handle 'mouse down' events
 function mouseDownHandler() {
-    console.log('mousedown');
+    // create 'dragObject' object from 'Drag' class
+    dragObject = new Drag();
+
+    // set 'isDragging' property to 'true'
+    dragObject.setIsDragging = true;
 }
 
 // function to handle 'mouse move' events
-function mouseMoveHandler() {
-    console.log('mousemove')
+function mouseMoveHandler(e) {
+    if(dragObject && dragObject.isDragging) {
+        // push current div to 'divIds' property of 'dragObject' object
+        dragObject.setDivIds = parseInt(e.target.id);
+    }
 }
 
 // function to handle 'mouse up' events
 function mouseUpHandler() {
-    console.log('mouseup');
+    if(dragObject) {
+    // store 'divIds' property in 'divIds' global variable
+    divIds = dragObject.getDivIds;
+
+    // reset 'dragObject' variable
+        dragObject = null;
+    }
 }
 
+// function to handle 'mouse leave' event over the 'inputArea' div
+function inputAreaMouseLeaveHandler() {
+    if(dragObject) {
+    // store 'divIds' property in 'divIds' global variable
+    divIds = dragObject.getDivIds;
+
+    // reset 'dragObject' variable
+        dragObject = null;
+    }
+}
+
+/**
+ * Other functions
+ */
 // function to insert smaller divs (input boxes) to the inputArea div
 function insertInputBoxes() {
 
@@ -103,7 +145,7 @@ function insertInputBoxes() {
      */
     for(let i = 1; i <= 14400; i++) {
         // create object from element class
-        let elementObject = new Element("div", i, ["input-box"], {widthattrib: "5px", heightattrib: "5px"}, {mousedown: mouseDownHandler, mousemove: mouseMoveHandler, mouseup: mouseUpHandler});
+        let elementObject = new Element("div", i, ["input-box"], {widthattrib: "5px", heightattrib: "5px"}, {mousedown: mouseDownHandler, mousemove: mouseMoveHandler});
 
         // call create() method to create element
         let element = elementObject.create();
