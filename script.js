@@ -1,8 +1,10 @@
 // get input area from DOM
 const inputArea = document.getElementById('input-area');
 
-// create input box element
 
+/**
+ * Classes go here
+ */
 /**
  * Element class
  * constructor params - element's tag, elment's id, element's classes
@@ -39,6 +41,39 @@ class Element {
     }
 
     
+}
+
+/**
+ * Drag class
+ */
+
+class Drag {
+    constructor() {
+        this.isDragging;
+        this.divIds = [];
+    }
+
+    /**
+     * setter for 'isDragging' property
+     * @param {boolean} value
+     */
+    set setIsDragging(value) {
+
+        // constrain 'value' parameter to a boolean
+        if(value === true || value === false) {
+            this.isDragging = value;
+        } 
+    }
+
+    /**
+     * @param {number} value
+     */
+    set setDivIds(value) {
+        // constrain 'value' parameter to a number
+        if(!isNaN(value)) {
+            this.divIds.push(value);
+        }
+    }
 }
 
 /**
