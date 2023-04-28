@@ -1,12 +1,7 @@
+/* class styles */
 .container {
     background-color: bisque;
     margin: 50px;
-}
-
-#input-area {
-    width: 600px;
-    height: 600px;
-    background-color: blue;
 }
 
 .input-box {
@@ -14,8 +9,21 @@
     width: 5px;
     height: 5px;
     float: left;
-/*     
-    margin-top: 0;
-    margin-bottom: 0;
-    padding: 0; */
+}
+
+/* id styles */
+#input-area {
+    width: 600px;
+    height: 600px;
+    background-color: blue;
+}
+
+#start-btn {
+    font-size: large;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: chocolate;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    border-width: 1px;
+    padding: 10px;
 }
