@@ -109,14 +109,20 @@ class Drag {
  */
 // startBtn event handler
 function startBtnHandler() {
-    // insert input boxes to input area
-    insertInputBoxes();
-
+    
     // toggle text of button depending on current state
     if(startBtn.innerText === "Start Writing") {
+
+        // insert input boxes to input area
+        insertInputBoxes();
         startBtn.innerText = "Stop Writing";
+
     } else if (startBtn.innerText === "Stop Writing") {
+
+        // remove input boxes from input area
+        removeInputBoxes();
         startBtn.innerText = "Start Writing";
+
     } else {
         // push error to error log
         errLogPush("An error occurred, please refresh the page");
@@ -165,6 +171,19 @@ function inputAreaMouseLeaveHandler() {
 /**
  * Other functions
  */
+// function to remove input boxes
+function removeInputBoxes() {
+    // check presence of input boxes
+    let elements = document.querySelectorAll('.input-box');
+
+    // iterate over each element and remove it from DOM
+    if (elements.length > 0) {
+        elements.forEach(element => {
+            element.remove();
+        });
+    }
+}
+
 // function to push errors to error log
 function errLogPush(msg) {
     errLog.push(msg);
