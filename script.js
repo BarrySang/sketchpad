@@ -3,12 +3,25 @@
  */
 // get input area from DOM
 const inputArea = document.getElementById('input-area');
+
+// get 'Start Writing' button from DOM
+const startBtn = document.getElementById('start-btn');
+
 // initialize variable to hold 'Drag' object
 let dragObject;
+
 // temporary storage for errors
 let errLog = [];
+
+/**
+ * Event Listeners
+ */
 // add 'mouseup' event listener to document
 inputArea.addEventListener('mouseleave', inputAreaMouseLeaveHandler);
+
+// add 'click' event listener to 'Start Writing' button
+startBtn.addEventListener('click', startBtnHandler);
+
 // variable to store ids of divs on which text to be recognized is drawn over
 let divIds = [];
 
@@ -94,6 +107,22 @@ class Drag {
 /**
  * Event handler functions
  */
+// startBtn event handler
+function startBtnHandler() {
+    // insert input boxes to input area
+    insertInputBoxes();
+
+    // toggle text of button depending on current state
+    if(startBtn.innerText === "Start Writing") {
+        startBtn.innerText = "Stop Writing";
+    } else if (startBtn.innerText === "Stop Writing") {
+        startBtn.innerText = "Start Writing";
+    } else {
+        // push error to error log
+        errLogPush("An error occurred, please refresh the page");
+    }
+}
+
 // function to handle 'mouse down' events
 function mouseDownHandler() {
     // create 'dragObject' object from 'Drag' class
@@ -136,6 +165,16 @@ function inputAreaMouseLeaveHandler() {
 /**
  * Other functions
  */
+// function to push errors to error log
+function errLogPush(msg) {
+    errLog.push(msg);
+}
+
+// function to change text of an element
+function changeText(element, newText) {
+    element.textContent = newText;
+}
+
 // function to insert smaller divs (input boxes) to the inputArea div
 function insertInputBoxes() {
 
