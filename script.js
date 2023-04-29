@@ -19,6 +19,9 @@ let errLog = [];
 // add 'mouseup' event listener to document
 inputArea.addEventListener('mouseleave', inputAreaMouseLeaveHandler);
 
+// add 'mouseup' event listener to window to listen for the end to a 'drag' action
+window.addEventListener('mouseup', mouseUpHandler);
+
 // add 'click' event listener to 'Start Writing' button
 startBtn.addEventListener('click', startBtnHandler);
 
@@ -130,7 +133,10 @@ function startBtnHandler() {
 }
 
 // function to handle 'mouse down' events
-function mouseDownHandler() {
+function mouseDownHandler(e) {
+    // prevent default behaviour on 'mouse down' event
+    e.preventDefault();
+
     // create 'dragObject' object from 'Drag' class
     dragObject = new Drag();
 
@@ -143,6 +149,9 @@ function mouseMoveHandler(e) {
     if(dragObject && dragObject.isDragging) {
         // push current div to 'divIds' property of 'dragObject' object
         dragObject.setDivIds = parseInt(e.target.id);
+
+        // change colour of current-div
+        (e.target).style.backgroundColor = "black";
     }
 }
 
